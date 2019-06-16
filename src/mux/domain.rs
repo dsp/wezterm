@@ -82,6 +82,7 @@ impl Domain for LocalDomain {
             size.cols as usize,
             self.config.scrollback_lines.unwrap_or(3500),
             self.config.hyperlink_rules.clone(),
+            self.config.colors.as_ref().map(|p| p.clone().into()).unwrap_or_else(term::color::ColorPalette::default),
         );
 
         let tab: Rc<dyn Tab> = Rc::new(LocalTab::new(terminal, child, pair.master, self.id));

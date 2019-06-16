@@ -2,6 +2,7 @@ use super::*;
 use std::sync::Arc;
 use termwiz::escape::parser::Parser;
 use termwiz::hyperlink::Rule as HyperlinkRule;
+use color::ColorPalette;
 
 /// Represents the host of the terminal.
 /// Provides a means for sending data to the connected pty,
@@ -69,6 +70,7 @@ impl Terminal {
         physical_cols: usize,
         scrollback_size: usize,
         hyperlink_rules: Vec<HyperlinkRule>,
+        palette: ColorPalette,
     ) -> Terminal {
         Terminal {
             state: TerminalState::new(
@@ -76,6 +78,7 @@ impl Terminal {
                 physical_cols,
                 scrollback_size,
                 hyperlink_rules,
+                palette,
             ),
             parser: Parser::new(),
         }

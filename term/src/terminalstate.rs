@@ -231,6 +231,7 @@ impl TerminalState {
         physical_cols: usize,
         scrollback_size: usize,
         hyperlink_rules: Vec<HyperlinkRule>,
+        palette: ColorPalette,
     ) -> TerminalState {
         let screen = ScreenOrAlt::new(physical_rows, physical_cols, scrollback_size);
 
@@ -258,7 +259,7 @@ impl TerminalState {
             tabs: TabStop::new(physical_cols, 8),
             hyperlink_rules,
             title: "wezterm".to_string(),
-            palette: ColorPalette::default(),
+            palette: palette,
         }
     }
 
